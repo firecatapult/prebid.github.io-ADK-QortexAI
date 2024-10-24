@@ -11,6 +11,11 @@ sidebarType: 3
 {: .alert.alert-warning :}
 This guide is not written, maintained, or endorsed by Freewheel. Freewheel recommends speaking to your account team before implementing any header-bidding setup to ensure full implications for direct-sold ad delivery, forecasting, and reporting is understood.
 
+{: .alert.alert-warning :}
+The approach described here could create too many line items in the ad server
+if the price buckets are too granular. We recommend that you consider how many
+line items can be supported and plan out the price granularity/category/duration combinations.
+
 This page describes how to set up Campaigns for long form video using FreeWheel's ad server.
 
 As with Google Ad Manager for digital ads, ad ops will need to configure their FreeWheel server account so that the server can provide the correct creatives for the video player. If you do not have an account visit [FreeWheel](https://www.freewheel.com/) to create one.  
@@ -127,8 +132,12 @@ In order for FreeWheel SDK to send the correct Creative to the video player it n
 
 To ensure the cache URL is correct there are two macros that dynamically  populate the URL query. To confirm the dynamic URL is formatted correctly click on the URL link in the Detail field. A pop over will display with the dynamic URL.  
 
-The scheme, host, and path should read as follows:
-<https://prebid.adnxs.com/pbc/v1/cache>
+The scheme, host, and path should point to your Prebid Server cache. For instance, if you
+utilize Xandr's AppNexus cache:
+
+```text
+https://prebid.adnxs.com/pbc/v1/cache
+```
 
 The query should have one key-value items:
 
